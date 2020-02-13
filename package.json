@@ -1,0 +1,27 @@
+{
+  "name": "parcel-rust-example",
+  "version": "1.0.0",
+  "description": "Example of using Rust code in Parcel",
+  "repository": "jamiebuilds/parcel-rust-example",
+  "author": "Jamie Kyle <me@thejameskyle.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "parcel build src/index.html",
+    "serve": "parcel serve src/index.html"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.1.1",
+    "parcel": "^1.9.6",
+    "parcel-bundler": "1.x",
+    "parcel-plugin-wasm.rs": "^1.2.15",
+    "sass": "^1.25.0",
+    "typescript": "^3.7.5",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "vue": "^2.6.11",
+    "vue-hot-reload-api": "^2.3.4",
+    "vue-property-decorator": "^8.4.0"
+  }
+}
