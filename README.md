@@ -1,4 +1,4 @@
-# ns
+# vue + rust boilerplate
 
 ## Project setup
 ```
