@@ -1,0 +1,11 @@
+.vscode
+
+*.log
+.cache
+
+node_modules
+dist
+
+wasm/target
+wasm/pkg
+
