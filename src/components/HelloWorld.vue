@@ -1,7 +1,14 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h1>Rust/WASM Demos</h1>
+    <h2>Alert Demo</h2>
     <button v-on:click="greet()">Say Hello</button>
+    <br />
+    <h2>Julia Set Demo</h2>
+    <button v-on:click="draw()">Draw Julia Set</button>
+    <br />
+    <canvas id="drawing" width="600" height="600"></canvas>
   </div>
 </template>
 
@@ -14,12 +21,28 @@ import { Options, Vue } from "vue-class-component";
   }
 })
 export default class HelloWorld extends Vue {
-  // eslint-disable-next-line
-  async greet() {
-    const { greet } = await import("@/wasm/pkg");
+  setup(): void {
+    this.draw();
+  }
+
+  async greet(): Promise<void> {
+    const { greet } = await import("../wasm/pkg");
     greet();
   }
 
+  async draw(): Promise<void> {
+    const { draw } = await import("../wasm/pkg");
+    const canvas: HTMLCanvasElement = document.getElementById(
+      "drawing"
+    ) as HTMLCanvasElement;
+    const ctx: CanvasRenderingContext2D = canvas.getContext(
+      "2d"
+    ) as CanvasRenderingContext2D;
+    draw(ctx, 600, 600, this.realInput, this.imaginaryInput);
+  }
+
+  realInput = -0.15;
+  imaginaryInput = 0.65;
   msg!: string;
 }
 </script>
