@@ -14,7 +14,6 @@ import { Options, Vue } from "vue-class-component";
   }
 })
 export default class HelloWorld extends Vue {
-
   // eslint-disable-next-line
   async greet() {
     const { greet } = await import("@/wasm/pkg");
