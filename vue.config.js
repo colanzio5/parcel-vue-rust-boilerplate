@@ -21,20 +21,17 @@ module.exports = {
             // args: "--log-level warn",
             // Default arguments are `--typescript --target browser --mode normal`.
             // extraArgs: "--no-typescript",
-            extraArgs: "--target bundler",
-
+            // extraArgs: "--target bundler",
 
             // Optional array of absolute paths to directories, changes to which
             // will trigger the build.
-            watchDirectories: [
-              path.resolve(__dirname, "wasm")
-            ],
+            watchDirectories: [path.resolve(__dirname, "./src/wasm/src/*")],
 
             // The same as the `--out-dir` option for `wasm-pack`
-            outDir: "dist",
+            outDir: path.resolve(__dirname, "./src/wasm/pkg"),
 
             // The same as the `--out-name` option for `wasm-pack`
-            outName: "index.wasm",
+            // outName: "index.wasm",
 
             // If defined, `forceWatch` will force activate/deactivate watch mode for
             // `.rs` files.

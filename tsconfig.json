@@ -31,6 +31,8 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.wasm",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
