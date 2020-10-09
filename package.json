@@ -1,5 +1,5 @@
 {
-  "name": "ns",
+  "name": "vue-rust-boilerplate",
   "version": "0.1.0",
   "private": true,
   "scripts": {

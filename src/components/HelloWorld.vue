@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <button v-on:click="greet()">ffff</button>
+    <button v-on:click="greet()">Say Hello</button>
   </div>
 </template>
 
@@ -14,9 +14,11 @@ import { Options, Vue } from "vue-class-component";
   }
 })
 export default class HelloWorld extends Vue {
+
+  // eslint-disable-next-line
   async greet() {
-    const wasm = await import("@/wasm/pkg");
-    wasm.greet()
+    const { greet } = await import("@/wasm/pkg");
+    greet();
   }
 
   msg!: string;
