@@ -8,7 +8,8 @@
 </template>
 
 <style lang="scss">
-html, body {
+html,
+body {
   background: black;
 }
 #app {
@@ -19,6 +20,7 @@ html, body {
   color: white;
   opacity: 0.99;
 }
+
 #nav {
   padding: 30px;
   a {
@@ -29,5 +31,14 @@ html, body {
       color: #42b983;
     }
   }
+}
+
+#drawing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 </style>
