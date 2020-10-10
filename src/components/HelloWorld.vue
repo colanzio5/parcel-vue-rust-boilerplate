@@ -8,9 +8,19 @@
     <h2>Julia Set Demo</h2>
     <button v-on:click="draw()">Draw Julia Set</button>
     <br />
-    <canvas id="drawing" width="600" height="600"></canvas>
   </div>
 </template>
+
+<style lang="scss">
+#drawing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+</style>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
@@ -21,8 +31,8 @@ import { Options, Vue } from "vue-class-component";
   }
 })
 export default class HelloWorld extends Vue {
-  setup(): void {
-    this.draw();
+  async setup(): Promise<void> {
+    await this.draw();
   }
 
   async greet(): Promise<void> {
@@ -31,14 +41,28 @@ export default class HelloWorld extends Vue {
   }
 
   async draw(): Promise<void> {
-    const { draw } = await import("../wasm/pkg");
-    const canvas: HTMLCanvasElement = document.getElementById(
-      "drawing"
-    ) as HTMLCanvasElement;
-    const ctx: CanvasRenderingContext2D = canvas.getContext(
-      "2d"
-    ) as CanvasRenderingContext2D;
-    draw(ctx, 600, 600, this.realInput, this.imaginaryInput);
+    try {
+      const { draw } = await import("../wasm/pkg");
+      const canvas: HTMLCanvasElement = document.getElementById(
+        "drawing"
+      ) as HTMLCanvasElement;
+      const width =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth;
+      const height =
+        window.innerHeight ||
+        document.documentElement.clientHeight ||
+        document.body.clientHeight;
+      canvas.width = width;
+      canvas.height = height;
+      const ctx: CanvasRenderingContext2D = canvas.getContext(
+        "2d"
+      ) as CanvasRenderingContext2D;
+      draw(ctx, width, width, this.realInput, this.imaginaryInput);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   realInput = -0.15;
